@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语学习工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>英语学习工具</h1>
+    <p>输入英语单词，获取音标和中文翻译：</p>
+    <input type="text" id="wordInput" placeholder="输入单词">
+    <button onclick="getTranslation()">查询</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function getTranslation() {
+            const word = document.getElementById('wordInput').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('result');
+
+            // 模拟词典数据库（可以根据需要扩展）
+            const dictionary = {
+                "hello": { "phonetic": "[həˈloʊ]", "translation": "你好" },
+                "world": { "phonetic": "[wɜːrld]", "translation": "世界" },
+                "apple": { "phonetic": "[ˈæpəl]", "translation": "苹果" },
+                "book": { "phonetic": "[bʊk]", "translation": "书" },
+                // 继续添加更多词汇...
+            };
+
+            if (dictionary[word]) {
+                const phonetic = dictionary[word].phonetic;
+                const translation = dictionary[word].translation;
+                resultDiv.innerHTML = `<p>音标: ${phonetic}</p><p>翻译: ${translation}</p>`;
+            } else {
+                resultDiv.innerHTML = "<p>抱歉，未找到该单词的翻译。</p>";
+            }
+        }
+    </script>
+</body>
+</html>
